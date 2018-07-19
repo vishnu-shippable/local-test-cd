@@ -8,8 +8,6 @@ jobs:
   - name: new-min-sh
     type: runSh
     runtime:
-      architecture: x86_64
-      os: Ubuntu_16.04
       container: false
     steps:
       - TASK:
