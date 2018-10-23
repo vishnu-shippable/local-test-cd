@@ -10,7 +10,14 @@ jobs:
     runtime:
       container: false
     steps:
+      - IN: docker-login
       - TASK:
           name: echo-facts
           script: 
             - echo "power rangers forever"
+            - docker pull vishnushippable/private:nginx
+
+resources:
+  - name: docker-login
+    type: cliConfig
+    integration: special_docker
