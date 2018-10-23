@@ -7,8 +7,6 @@ jobs:
 
   - name: new-min-sh
     type: runSh
-    runtime:
-      container: false
     steps:
       - IN: docker-login
       - TASK:
