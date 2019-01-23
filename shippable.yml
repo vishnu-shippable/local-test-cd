@@ -1,8 +1,6 @@
 jobs:
   - name: irc-shipctl-testing
     type: runSh
-    runtime:
-      container: false
     steps:
       - IN: irc-notifier
       - TASK:
@@ -14,8 +12,6 @@ jobs:
             
   - name: irc-notify-testing
     type: runSh
-    runtime:
-      container: false
     on_start:
       - NOTIFY: irc-notifier
     steps:
