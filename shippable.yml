@@ -1,0 +1,33 @@
+jobs:
+  - name: irc-shipctl-testing
+    type: runSh
+    runtime:
+      container: false
+    steps:
+      - IN: irc-notifier
+      - TASK:
+          name: should-message-irc
+          script:
+            - echo "hello"
+            - shipctl notify irc-notifier --text="hello from runsh job"
+            - echo "bye"
+            
+  - name: irc-notify-testing
+    type: runSh
+    runtime:
+      container: false
+    on_start:
+      - NOTIFY: irc-notifier
+    steps:
+      - TASK:
+          name: should-message-irc
+          script:
+            - echo "hello"
+
+resources:
+  - name: irc-notifier
+    type: notification
+    versionTemplate:
+      method: irc
+      recipients:
+        - "chat.freenode.net#shiptest"
