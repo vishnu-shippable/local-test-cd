@@ -12,9 +12,10 @@ jobs:
             
   - name: irc-notify-testing
     type: runSh
-    on_start:
-      - NOTIFY: freenode-notifier
-      - NOTIFY: rizon-notifier
+    on_success:
+      NOTIFY:
+        - name: freenode-notifier
+        - name: rizon-notifier
     steps:
       - TASK:
           name: should-message-irc
