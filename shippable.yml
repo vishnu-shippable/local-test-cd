@@ -14,6 +14,7 @@ jobs:
     type: runSh
     on_start:
       - NOTIFY: freenode-notifier
+      - NOTIFY: rizon-notifier
     steps:
       - TASK:
           name: should-message-irc
