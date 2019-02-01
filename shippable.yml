@@ -2,7 +2,7 @@ jobs:
   - name: irc-shipctl-testing
     type: runSh
     steps:
-      - IN: irc-notifier
+      - IN: freenode-notifier
       - TASK:
           name: should-message-irc
           script:
@@ -13,7 +13,7 @@ jobs:
   - name: irc-notify-testing
     type: runSh
     on_start:
-      - NOTIFY: irc-notifier
+      - NOTIFY: freenode-notifier
     steps:
       - TASK:
           name: should-message-irc
@@ -21,9 +21,16 @@ jobs:
             - echo "hello"
 
 resources:
-  - name: irc-notifier
+  - name: freenode-notifier
     type: notification
     versionTemplate:
       method: irc
       recipients:
         - "chat.freenode.net#shiptest"
+
+  - name: rizon-notifier
+    type: notification
+    versionTemplate:
+      method: irc
+      recipients:
+        - "irc.rizon.net#shiptest"
