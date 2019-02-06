@@ -15,8 +15,8 @@ jobs:
     on_success:
       NOTIFY:
         - name: freenode-notifier
-        - name: rizon-notifier
-        - name: ircnet-notifier
+#         - name: rizon-notifier
+#         - name: ircnet-notifier
     steps:
       - TASK:
           name: should-message-irc
