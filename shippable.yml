@@ -16,6 +16,7 @@ jobs:
       NOTIFY:
         - name: freenode-notifier
         - name: rizon-notifier
+        - name: ircnet-notifier
     steps:
       - TASK:
           name: should-message-irc
@@ -36,3 +37,10 @@ resources:
       method: irc
       recipients:
         - "irc.rizon.net#shiptest"
+
+  - name: ircnet-notifier
+    type: notification
+    versionTemplate:
+      method: irc
+      recipients:
+        - "open.ircnet.net#shiptest"
