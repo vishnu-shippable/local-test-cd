@@ -14,8 +14,8 @@ jobs:
     type: runSh
     on_success:
       NOTIFY:
-#         - name: freenode-notifier
-        - name: rizon-notifier
+        - name: freenode-notifier
+#         - name: rizon-notifier
 #         - name: ircnet-notifier
     steps:
       - TASK:
