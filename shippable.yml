@@ -16,7 +16,7 @@ jobs:
       NOTIFY:
         - name: freenode-notifier
 #         - name: rizon-notifier
-#         - name: ircnet-notifier
+        - name: ircnet-notifier
     steps:
       - TASK:
           name: should-message-irc
