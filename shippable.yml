@@ -1,8 +1,17 @@
 jobs:
-  - name: airbrake-shipctl-testing
+  - name: airbrake-userlevel-testing
     type: runSh
     steps:
-      - IN: airbrake-notifier
+      - IN: airbrake-userlevel-notifier
+      - TASK:
+          name: should-message-airbrake
+          script:
+            - echo "hello"
+            
+  - name: airbrake-projectlevel-testing
+    type: runSh
+    steps:
+      - IN: airbrake-projectlevel-noifier
       - TASK:
           name: should-message-airbrake
           script:
