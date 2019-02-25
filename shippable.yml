@@ -8,6 +8,10 @@ jobs:
           script:
             - echo "hello"
             - printenv
+            - git clone https://github.com/scriptnull/node.git
+            - cd node
+            - sudo shipctl/x86_64/Ubuntu_16.04/install.sh
+            - shipctl notify airbrake-userlevel-noifier --project-id="215168" --type="deploy"  --environment="production" --username="tron" --repository="https://github.com/vishnu-shippable/local-test-cd" --revision="user.prod.$BUILD_NUMBER"
             
   - name: airbrake-projectlevel-testing
     type: runSh
