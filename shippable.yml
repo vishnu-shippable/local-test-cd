@@ -7,6 +7,7 @@ jobs:
           name: should-message-airbrake
           script:
             - echo "hello"
+            - printenv
             
   - name: airbrake-projectlevel-testing
     type: runSh
@@ -16,6 +17,7 @@ jobs:
           name: should-message-airbrake
           script:
             - echo "hello"
+            - printenv
 
 resources:
   - name: airbrake-userlevel-notifier
