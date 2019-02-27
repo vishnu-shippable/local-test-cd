@@ -40,6 +40,20 @@ jobs:
             - cd node
             - sudo shipctl/x86_64/Ubuntu_16.04/install.sh
             - shipctl notify airbrake-userlevel-notifier
+            
+  - name: airbrake-payload-testing
+    type: runSh
+    steps:
+      - IN: airbrake-userlevel-notifier
+      - TASK:
+          name: should-message-airbrake
+          script:
+            - echo "hello"
+            - printenv
+            - git clone https://github.com/scriptnull/node.git
+            - cd node
+            - sudo shipctl/x86_64/Ubuntu_16.04/install.sh
+            - shipctl notify airbrake-userlevel-notifier --project-id="215168" --type="deploy"  --payload='{ "environment": "payload", "username": "gg", "revision": "x1" }'
 
 resources:
   - name: airbrake-userlevel-notifier
