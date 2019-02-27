@@ -39,7 +39,7 @@ jobs:
             - git clone https://github.com/scriptnull/node.git
             - cd node
             - sudo shipctl/x86_64/Ubuntu_16.04/install.sh
-            - shipctl notify airbrake-userlevel-notifier --type="deploy" # missing project-id and other args
+            - shipctl notify airbrake-userlevel-notifier
 
 resources:
   - name: airbrake-userlevel-notifier
