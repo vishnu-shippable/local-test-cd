@@ -53,7 +53,7 @@ jobs:
             - git clone https://github.com/scriptnull/node.git
             - cd node
             - sudo shipctl/x86_64/Ubuntu_16.04/install.sh
-            - echo "{ \"environment\": \"payload\", \"username\": \"gg\", \"revision\": \"x1\" }" > /tmp/p.json
+            - echo '{ "environment": "payload", "username": "gg", "revision": "x1" }' > /tmp/p.json
             - shipctl notify airbrake-userlevel-notifier --project-id="215168" --type="deploy"  --payload="/tmp/p.json"
 
 resources:
