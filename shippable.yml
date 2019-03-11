@@ -1,38 +1,37 @@
-jobs:
-  - name: irc-shipctl-testing
-    type: runSh
-    steps:
-      - IN: freenode-notifier
-      - TASK:
-          name: should-message-irc
-          script:
-            - echo "hello"
-            - shipctl notify irc-notifier --text="hello from runsh job"
-            - echo "bye"
-            
-  - name: irc-notify-testing
+jobs:         
+  - name: notify-irc
     type: runSh
     on_success:
       NOTIFY:
         - name: freenode-notifier
-        - name: rizon-notifier
     steps:
       - TASK:
           name: should-message-irc
           script:
             - echo "hello"
 
+  - name: notify-slack
+    type: runSh
+    on_success:
+      NOTIFY:
+        - name: slack-notifier
+    steps:
+      - TASK:
+          name: should-message-slack
+          script:
+            - echo "hello"
+
 resources:
+  - name: slack-notifier
+    type:notification
+    integration: slack_int
+    versionTemplate:
+      recipients:
+        - "#scriptnull-test"
+
   - name: freenode-notifier
     type: notification
     versionTemplate:
       method: irc
       recipients:
         - "chat.freenode.net#shiptest"
-
-  - name: rizon-notifier
-    type: notification
-    versionTemplate:
-      method: irc
-      recipients:
-        - "irc.rizon.net#shiptest"
