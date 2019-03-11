@@ -29,6 +29,21 @@ jobs:
           script:
             - echo "hello"
 
+  - name: notify-email
+    type: runSh
+    on_success:
+      NOTIFY:
+        - name: email-notifier
+    steps:
+      - TASK:
+          name: should-email
+          runtime:
+            options:
+              imageName: drydock/u16nodall
+              imageTag: v6.9.4
+          script:
+            - echo "hello"
+
 resources:
   - name: slack-notifier
     type: notification
@@ -43,3 +58,10 @@ resources:
       method: irc
       recipients:
         - "chat.freenode.net#shiptest"
+        
+  - name: email-notifier
+    type: notification
+    versionTemplate:
+      method: email
+      recipients:
+        - "vishnu@shippable.com"
