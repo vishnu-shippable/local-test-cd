@@ -7,6 +7,10 @@ jobs:
     steps:
       - TASK:
           name: should-message-irc
+          runtime:
+            options:
+              imageName: drydock/u16nodall
+              imageTag: v6.9.4
           script:
             - echo "hello"
 
