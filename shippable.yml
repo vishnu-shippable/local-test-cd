@@ -23,7 +23,7 @@ jobs:
 
 resources:
   - name: slack-notifier
-    type:notification
+    type: notification
     integration: slack_int
     versionTemplate:
       recipients:
