@@ -18,6 +18,9 @@ jobs:
     steps:
       - TASK:
           name: should-message-slack
+          runtime:
+            imageName: drydock/u16nodall
+            imageTag: v6.9.4
           script:
             - echo "hello"
 
