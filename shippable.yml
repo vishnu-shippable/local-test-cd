@@ -1,12 +1,9 @@
 jobs:         
   - name: notify-irc
     type: runSh
-    on_success:
-      NOTIFY:
-        - name: freenode-notifier
     steps:
       - TASK:
-          name: should-message-irc
+          name: should-echo-hello
           runtime:
             options:
               imageName: drydock/u16nodall
@@ -14,54 +11,3 @@ jobs:
           script:
             - echo "hello"
 
-  - name: notify-slack
-    type: runSh
-    on_success:
-      NOTIFY:
-        - name: slack-notifier
-    steps:
-      - TASK:
-          name: should-message-slack
-          runtime:
-            options:
-              imageName: drydock/u16nodall
-              imageTag: v6.9.4
-          script:
-            - echo "hello"
-
-  - name: notify-email
-    type: runSh
-    on_success:
-      NOTIFY:
-        - name: email-notifier
-    steps:
-      - TASK:
-          name: should-email
-          runtime:
-            options:
-              imageName: drydock/u16nodall
-              imageTag: v6.9.4
-          script:
-            - echo "hello"
-
-resources:
-  - name: slack-notifier
-    type: notification
-    integration: slack_int
-    versionTemplate:
-      recipients:
-        - "#scriptnull-test"
-
-  - name: freenode-notifier
-    type: notification
-    versionTemplate:
-      method: irc
-      recipients:
-        - "chat.freenode.net#shiptest"
-        
-  - name: email-notifier
-    type: notification
-    versionTemplate:
-      method: email
-      recipients:
-        - "vishnu@shippable.com"
